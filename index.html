@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EBD Completa - Escola Bíblica Dominical">
+    <meta name="theme-color" content="#6B46C1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="EBD Completa">
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect fill='%236B46C1' width='64' height='64'/><text x='32' y='32' font-size='40' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'>📖</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%236B46C1' width='180' height='180'/><text x='90' y='90' font-size='100' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'>📖</text></svg>">
+    
+    <title>EBD Completa - Escola Bíblica Dominical</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>📖 EBD</h1>
+            <p class="subtitle">Escola Bíblica Dominical</p>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="#" onclick="showSection('home')" class="nav-link active">🏠 Início</a></li>
+            <li><a href="#" onclick="showSection('licoes')" class="nav-link">📚 Lições</a></li>
+            <li><a href="#" onclick="showSection('trimestres')" class="nav-link">📅 Trimestres</a></li>
+            <li><a href="#" onclick="showSection('versiculos')" class="nav-link">📖 Versículos</a></li>
+            <li><a href="#" onclick="showSection('perguntas')" class="nav-link">📝 Perguntas</a></li>
+            <li><a href="#" onclick="showSection('arquivos')" class="nav-link">📁 Arquivos</a></li>
+            <li><a href="#" onclick="showSection('avisos')" class="nav-link">📢 Avisos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="home-content">
+                <h2>Bem-vindo à EBD</h2>
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="showSection('licoes')">
+                        <div class="icon">📚</div>
+                        <h3>Lições</h3>
+                        <p>Estudos e lições da EBD</p>
+                    </div>
+                    <div class="menu-card" onclick="showSection('arquivos')">
+                        <div class="icon">📁</div>
+                        <h3>Arquivos</h3>
+                        <p>PDFs e materiais para estudo</p>
+                    </div>
+                    <div class="menu-card" onclick="showSection('trimestres')">
+                        <div class="icon">📅</div>
+                        <h3>Trimestres</h3>
+                        <p>Organize as lições por trimestre</p>
+                    </div>
+                    <div class="menu-card" onclick="showSection('versiculos')">
+                        <div class="icon">📖</div>
+                        <h3>Versículos</h3>
+                        <p>Versículos para memorizar</p>
+                    </div>
+                    <div class="menu-card" onclick="showSection('perguntas')">
+                        <div class="icon">📝</div>
+                        <h3>Perguntas</h3>
+                        <p>Revisões e atividades das lições</p>
+                    </div>
+                    <div class="menu-card" onclick="showSection('avisos')">
+                        <div class="icon">📢</div>
+                        <h3>Avisos</h3>
+                        <p>Comunicados da igreja e da EBD</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lições Section -->
+        <section id="licoes" class="section" style="display: none;">
+            <h2>📚 Lições</h2>
+            <button onclick="openLicaoModal()" class="btn btn-primary">➕ Nova Lição</button>
+            <div id="licoesList" class="list-container"></div>
+        </section>
+
+        <!-- Trimestres Section -->
+        <section id="trimestres" class="section" style="display: none;">
+            <h2>📅 Trimestres</h2>
+            <button onclick="openTrimestralModal()" class="btn btn-primary">➕ Novo Trimestre</button>
+            <div id="trimestralList" class="list-container"></div>
+        </section>
+
+        <!-- Versículos Section -->
+        <section id="versiculos" class="section" style="display: none;">
+            <h2>📖 Versículos</h2>
+            <button onclick="openVersiculo Modal()" class="btn btn-primary">➕ Novo Versículo</button>
+            <div id="versiculosList" class="list-container"></div>
+        </section>
+
+        <!-- Perguntas Section -->
+        <section id="perguntas" class="section" style="display: none;">
+            <h2>📝 Perguntas e Revisões</h2>
+            <button onclick="openPerguntaModal()" class="btn btn-primary">➕ Nova Pergunta</button>
+            <div id="perguntasList" class="list-container"></div>
+        </section>
+
+        <!-- Arquivos Section -->
+        <section id="arquivos" class="section" style="display: none;">
+            <h2>📁 Arquivos</h2>
+            <button onclick="openArquivoModal()" class="btn btn-primary">➕ Novo Arquivo</button>
+            <div id="arquivosList" class="list-container"></div>
+        </section>
+
+        <!-- Avisos Section -->
+        <section id="avisos" class="section" style="display: none;">
+            <h2>📢 Avisos</h2>
+            <button onclick="openAvisoModal()" class="btn btn-primary">➕ Novo Aviso</button>
+            <div id="avisosList" class="list-container"></div>
+        </section>
+    </div>
+
+    <!-- Modals -->
+    <!-- Lição Modal -->
+    <div id="licaoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLicaoModal()">&times;</span>
+            <h2>Nova Lição</h2>
+            <form onsubmit="salvarLicao(event)">
+                <input type="hidden" id="licaoId">
+                <div class="form-group">
+                    <label>Título:</label>
+                    <input type="text" id="licaoTitulo" required>
+                </div>
+                <div class="form-group">
+                    <label>Referência Bíblica:</label>
+                    <input type="text" id="licaoReferencia" placeholder="João 3:16">
+                </div>
+                <div class="form-group">
+                    <label>Descrição:</label>
+                    <textarea id="licaoDescricao" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Data:</label>
+                    <input type="date" id="licaoData" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Trimestral Modal -->
+    <div id="trimestralModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeTrimestralModal()">&times;</span>
+            <h2>Novo Trimestre</h2>
+            <form onsubmit="salvarTrimestral(event)">
+                <input type="hidden" id="trimestralId">
+                <div class="form-group">
+                    <label>Título:</label>
+                    <input type="text" id="trimestralTitulo" placeholder="1º Trimestre 2024" required>
+                </div>
+                <div class="form-group">
+                    <label>Tema:</label>
+                    <input type="text" id="trimestralTema" required>
+                </div>
+                <div class="form-group">
+                    <label>Data Início:</label>
+                    <input type="date" id="trimestralDataInicio" required>
+                </div>
+                <div class="form-group">
+                    <label>Data Fim:</label>
+                    <input type="date" id="trimestralDataFim" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Versículo Modal -->
+    <div id="versiculoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeVersiculoModal()">&times;</span>
+            <h2>Novo Versículo</h2>
+            <form onsubmit="salvarVersiculo(event)">
+                <input type="hidden" id="versiculoId">
+                <div class="form-group">
+                    <label>Referência:</label>
+                    <input type="text" id="versiculoReferencia" placeholder="João 3:16" required>
+                </div>
+                <div class="form-group">
+                    <label>Texto:</label>
+                    <textarea id="versiculoTexto" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Categoria:</label>
+                    <select id="versiculoCategoria">
+                        <option value="">-- Selecione --</option>
+                        <option value="Amor">Amor</option>
+                        <option value="Fé">Fé</option>
+                        <option value="Esperança">Esperança</option>
+                        <option value="Salvação">Salvação</option>
+                        <option value="Sabedoria">Sabedoria</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pergunta Modal -->
+    <div id="perguntaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePerguntaModal()">&times;</span>
+            <h2>Nova Pergunta</h2>
+            <form onsubmit="salvarPergunta(event)">
+                <input type="hidden" id="perguntaId">
+                <div class="form-group">
+                    <label>Pergunta:</label>
+                    <textarea id="perguntaTexto" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Resposta:</label>
+                    <textarea id="perguntaResposta" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Lição Relacionada:</label>
+                    <input type="text" id="perguntaLicao">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Arquivo Modal -->
+    <div id="arquivoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeArquivoModal()">&times;</span>
+            <h2>Novo Arquivo</h2>
+            <form onsubmit="salvarArquivo(event)">
+                <input type="hidden" id="arquivoId">
+                <div class="form-group">
+                    <label>Nome do Arquivo:</label>
+                    <input type="text" id="arquivoNome" required>
+                </div>
+                <div class="form-group">
+                    <label>URL do Arquivo:</label>
+                    <input type="url" id="arquivoURL" placeholder="https://exemplo.com/arquivo.pdf" required>
+                </div>
+                <div class="form-group">
+                    <label>Tipo:</label>
+                    <select id="arquivoTipo" required>
+                        <option value="">-- Selecione --</option>
+                        <option value="PDF">PDF</option>
+                        <option value="Imagem">Imagem</option>
+                        <option value="Vídeo">Vídeo</option>
+                        <option value="Áudio">Áudio</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Descrição:</label>
+                    <textarea id="arquivoDescricao" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Aviso Modal -->
+    <div id="avisoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAvisoModal()">&times;</span>
+            <h2>Novo Aviso</h2>
+            <form onsubmit="salvarAviso(event)">
+                <input type="hidden" id="avisoId">
+                <div class="form-group">
+                    <label>Título:</label>
+                    <input type="text" id="avisoTitulo" required>
+                </div>
+                <div class="form-group">
+                    <label>Mensagem:</label>
+                    <textarea id="avisoMensagem" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Urgência:</label>
+                    <select id="avisoUrgencia">
+                        <option value="Baixa">Baixa</option>
+                        <option value="Média">Média</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Data:</label>
+                    <input type="date" id="avisoData" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration failed:', err));
+        }
+    </script>
+</body>
+</html>
